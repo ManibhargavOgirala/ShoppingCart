@@ -21,11 +21,13 @@ public class Product  extends  BaseClass{
     private String dimension;
     @Column(name = "discountPercentage")
     private Long discountPercentage;
+    @Column(name = "quantity")
+    private Integer quantity;
 
     public Product() {
     }
 
-    public Product(Long productId, String productName, byte[] productImage, Double productPrice, Long categoryId, String dimension, Long discountPercentage) {
+    public Product(Long productId, String productName, byte[] productImage, Double productPrice, Long categoryId, String dimension, Long discountPercentage,int quantity) {
         this.productId = productId;
         this.productName = productName;
         this.productImage = productImage;
@@ -33,6 +35,7 @@ public class Product  extends  BaseClass{
         this.categoryId = categoryId;
         this.dimension = dimension;
         this.discountPercentage = discountPercentage;
+        this.quantity=quantity;
     }
 
     public Long getDiscountPercentage() {
@@ -89,5 +92,13 @@ public class Product  extends  BaseClass{
 
     public void setDimension(String dimension) {
         this.dimension = dimension;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
     }
 }
