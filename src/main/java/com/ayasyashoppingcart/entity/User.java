@@ -3,118 +3,120 @@ package com.ayasyashoppingcart.entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name="user")
+@Table(name = "user")
 public class User extends BaseClass {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "user_id")
-    private Long userId;
-    @Column(name = "user_name")
-    private String userName;
-    @Column(name = "login_name",unique = true)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "user_id")
+	private Long userId;
 
-    private String loginName;
-    @Column(name = "email",unique = true)
-    private String emailAddress;
-    @Column(name = "contactNo",unique = true)
-    private String contactNo;
-    @Column(name = "age")
-    private Integer age;
-    @Column(name="password")
-    private String password;
-    @Column(name="gender")
-    private String gender;
+	@Column(name = "user_name")
+	private String userName;
 
-    public User(Long id, String productName, String categoryName, Integer quantity, Double price, Long userId, String userName, String emailAddress, String contactNo, Integer age, String password, String gender,String loginName) {
+	@Column(name = "login_name", unique = true)
+	private String loginName;
 
-        this.userId = userId;
-        this.userName = userName;
-        this.emailAddress = emailAddress;
-        this.contactNo = contactNo;
-        this.age = age;
-        this.password = password;
-        this.gender = gender;
-        this.loginName=loginName;
-    }
+	@Column(name = "email", unique = true)
+	private String emailAddress;
 
-    public User() {
-        super();
-    }
+	@Column(name = "contact", unique = true)
+	private String contactNo;
 
-    public Long getUserId() {
-        return userId;
-    }
+	@Column(name = "age")
+	private Integer age;
 
-    public String getLoginName() {
-        return loginName;
-    }
+	@Column(name = "password")
+	private String password;
 
-    public void setLoginName(String loginName) {
-        this.loginName = loginName;
-    }
+	@Column(name = "gender")
+	private String gender;
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
+	public User(Long id, String productName, String categoryName, Integer quantity, Double price, Long userId,
+			String userName, String emailAddress, String contactNo, Integer age, String password, String gender,
+			String loginName) {
 
-    public String getUserName() {
-        return userName;
-    }
+		this.userId = userId;
+		this.userName = userName;
+		this.emailAddress = emailAddress;
+		this.contactNo = contactNo;
+		this.age = age;
+		this.password = password;
+		this.gender = gender;
+		this.loginName = loginName;
+	}
 
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
+	public User() {
+		super();
+	}
 
-    public String getEmailAddress() {
-        return emailAddress;
-    }
+	public Long getUserId() {
+		return userId;
+	}
 
-    public void setEmailAddress(String emailAddress) {
-        this.emailAddress = emailAddress;
-    }
+	public String getLoginName() {
+		return loginName;
+	}
 
-    public String getContactNo() {
-        return contactNo;
-    }
+	public void setLoginName(String loginName) {
+		this.loginName = loginName;
+	}
 
-    public void setContactNo(String contactNo) {
-        this.contactNo = contactNo;
-    }
+	public void setUserId(Long userId) {
+		this.userId = userId;
+	}
 
-    public Integer getAge() {
-        return age;
-    }
+	public String getUserName() {
+		return userName;
+	}
 
-    public void setAge(Integer age) {
-        this.age = age;
-    }
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
 
-    public String getPassword() {
-        return password;
-    }
+	public String getEmailAddress() {
+		return emailAddress;
+	}
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+	public void setEmailAddress(String emailAddress) {
+		this.emailAddress = emailAddress;
+	}
 
-    public String getGender() {
-        return gender;
-    }
+	public String getContactNo() {
+		return contactNo;
+	}
 
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
+	public void setContactNo(String contactNo) {
+		this.contactNo = contactNo;
+	}
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "userId=" + userId +
-                ", userName='" + userName + '\'' +
-                ", emailAddress='" + emailAddress + '\'' +
-                ", contactNo='" + contactNo + '\'' +
-                ", age=" + age +
-                ", password='" + password + '\'' +
-                ", gender='" + gender + '\'' +
-                '}';
-    }
+	public Integer getAge() {
+		return age;
+	}
+
+	public void setAge(Integer age) {
+		this.age = age;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+	@Override
+	public String toString() {
+		return "User{" + "userId=" + userId + ", userName='" + userName + '\'' + ", emailAddress='" + emailAddress
+				+ '\'' + ", contactNo='" + contactNo + '\'' + ", age=" + age + ", password='" + password + '\''
+				+ ", gender='" + gender + '\'' + '}';
+	}
 }

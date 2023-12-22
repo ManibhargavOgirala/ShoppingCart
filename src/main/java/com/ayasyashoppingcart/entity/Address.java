@@ -3,184 +3,182 @@ package com.ayasyashoppingcart.entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name="address")
-public class Address extends BaseClass{
+@Table(name = "address")
+public class Address extends BaseClass {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "address_id")
-    private Long addressId;
-    @Column(name = "last_name")
-    private String lastName;
-    @Column(name = "first_name")
-    private String firstName;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "address_id")
+	private Long addressId;
 
+	@Column(name = "user_id")
+	private Long userId;
 
+	@Column(name = "last_name")
+	private String lastName;
 
-    @Column(name = "email_address",unique = true)
-    private String emailAddress;
-    @Column(name="contactNo",unique = true)
-    private String contactNo;
-   @Column(name="country")
-    private String country;
-    @Column(name="pincode")
-   private String pincode;
-    @Column(name ="doorNo")
-    private String doorNo;
-    @Column(name ="street")
-    private String street;
+	@Column(name = "first_name")
+	private String firstName;
 
-    @Column(name ="landMark")
-    private String landMark;
+	@Column(name = "email", unique = true)
+	private String emailAddress;
 
-    @Column(name ="city")
-    private String city;
-    @Column(name ="state")
-    private String state;
+	@Column(name = "contact", unique = true)
+	private String contactNo;
 
+	@Column(name = "country")
+	private String country;
 
-    @Column(name="userId")
-    private Long userId;
+	@Column(name = "pincode")
+	private String pincode;
 
-    public Address(Long addressId, String lastName, String firstName, String emailAddress, String contactNo, String country, String pincode, String doorNo, String street, String landMark, String city, String state, Long userId) {
-        this.addressId = addressId;
-        this.lastName = lastName;
-        this.firstName = firstName;
-        this.emailAddress = emailAddress;
-        this.contactNo = contactNo;
-        this.country = country;
-        this.pincode = pincode;
-        this.doorNo = doorNo;
-        this.street = street;
-        this.landMark = landMark;
-        this.city = city;
-        this.state = state;
-        this.userId = userId;
-    }
+	@Column(name = "door_no")
+	private String doorNo;
 
-    public Address() {
-    }
+	@Column(name = "street")
+	private String street;
 
-    public Long getAddressId() {
-        return addressId;
-    }
+	@Column(name = "landmark")
+	private String landmark;
 
-    public void setAddressId(Long addressId) {
-        this.addressId = addressId;
-    }
+	@Column(name = "city")
+	private String city;
 
-    public String getLastName() {
-        return lastName;
-    }
+	@Column(name = "state")
+	private String state;
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
+	public Address(Long addressId, Long userId, String lastName, String firstName, String emailAddress,
+			String contactNo, String country, String pincode, String doorNo, String street, String landmark,
+			String city, String state) {
+		this.addressId = addressId;
+		this.userId = userId;
+		this.lastName = lastName;
+		this.firstName = firstName;
+		this.emailAddress = emailAddress;
+		this.contactNo = contactNo;
+		this.country = country;
+		this.pincode = pincode;
+		this.doorNo = doorNo;
+		this.street = street;
+		this.landmark = landmark;
+		this.city = city;
+		this.state = state;
+	}
 
-    public String getFirstName() {
-        return firstName;
-    }
+	public Address() {
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
+	}
 
-    public String getEmailAddress() {
-        return emailAddress;
-    }
+	public Long getAddressId() {
+		return addressId;
+	}
 
-    public void setEmailAddress(String emailAddress) {
-        this.emailAddress = emailAddress;
-    }
+	public void setAddressId(Long addressId) {
+		this.addressId = addressId;
+	}
 
-    public String getContactNo() {
-        return contactNo;
-    }
+	public Long getUserId() {
+		return userId;
+	}
 
-    public void setContactNo(String contactNo) {
-        this.contactNo = contactNo;
-    }
+	public void setUserId(Long userId) {
+		this.userId = userId;
+	}
 
-    public String getCountry() {
-        return country;
-    }
+	public String getLastName() {
+		return lastName;
+	}
 
-    public void setCountry(String country) {
-        this.country = country;
-    }
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
 
-    public String getPincode() {
-        return pincode;
-    }
+	public String getFirstName() {
+		return firstName;
+	}
 
-    public void setPincode(String pincode) {
-        this.pincode = pincode;
-    }
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
 
-    public String getDoorNo() {
-        return doorNo;
-    }
+	public String getEmailAddress() {
+		return emailAddress;
+	}
 
-    public void setDoorNo(String doorNo) {
-        this.doorNo = doorNo;
-    }
+	public void setEmailAddress(String emailAddress) {
+		this.emailAddress = emailAddress;
+	}
 
-    public String getStreet() {
-        return street;
-    }
+	public String getContactNo() {
+		return contactNo;
+	}
 
-    public void setStreet(String street) {
-        this.street = street;
-    }
+	public void setContactNo(String contactNo) {
+		this.contactNo = contactNo;
+	}
 
-    public String getLandMark() {
-        return landMark;
-    }
+	public String getCountry() {
+		return country;
+	}
 
-    public void setLandMark(String landMark) {
-        this.landMark = landMark;
-    }
+	public void setCountry(String country) {
+		this.country = country;
+	}
 
-    public String getCity() {
-        return city;
-    }
+	public String getPincode() {
+		return pincode;
+	}
 
-    public void setCity(String city) {
-        this.city = city;
-    }
+	public void setPincode(String pincode) {
+		this.pincode = pincode;
+	}
 
-    public String getState() {
-        return state;
-    }
+	public String getDoorNo() {
+		return doorNo;
+	}
 
-    public void setState(String state) {
-        this.state = state;
-    }
+	public void setDoorNo(String doorNo) {
+		this.doorNo = doorNo;
+	}
 
-    public Long getUserId() {
-        return userId;
-    }
+	public String getStreet() {
+		return street;
+	}
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
+	public void setStreet(String street) {
+		this.street = street;
+	}
 
-    @Override
-    public String toString() {
-        return "Address{" +
-                "addressId=" + addressId +
-                ", lastName='" + lastName + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", emailAddress='" + emailAddress + '\'' +
-                ", contactNo='" + contactNo + '\'' +
-                ", country='" + country + '\'' +
-                ", pincode='" + pincode + '\'' +
-                ", doorNo='" + doorNo + '\'' +
-                ", street='" + street + '\'' +
-                ", landMark='" + landMark + '\'' +
-                ", city='" + city + '\'' +
-                ", state='" + state + '\'' +
-                ", userId=" + userId +
-                '}';
-    }
+	public String getLandmark() {
+		return landmark;
+	}
+
+	public void setLandmark(String landmark) {
+		this.landmark = landmark;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
+	@Override
+	public String toString() {
+		return "Address [addressId=" + addressId + ", userId=" + userId + ", lastName=" + lastName + ", firstName="
+				+ firstName + ", emailAddress=" + emailAddress + ", contactNo=" + contactNo + ", country=" + country
+				+ ", pincode=" + pincode + ", doorNo=" + doorNo + ", street=" + street + ", landmark=" + landmark
+				+ ", city=" + city + ", state=" + state + "]";
+	}
+
 }
