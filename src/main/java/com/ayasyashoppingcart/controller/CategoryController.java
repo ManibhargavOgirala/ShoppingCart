@@ -21,13 +21,22 @@ public class CategoryController {
 	@Autowired
 	private CategoryService categoryService;
 
-	@PostMapping(value = "/saveCategory", consumes = MediaType.APPLICATION_JSON_VALUE)
-	public Category saveCategory(@RequestBody CategoryRequest categoryRequest)
-
-	{
+	@PostMapping(value = "/saveCategory")
+	public Category saveCategory(@RequestBody CategoryRequest categoryRequest) {
 		try {
 			Category addCategory = categoryService.addCategory(categoryRequest);
 			return addCategory;
+		} catch (Exception e) {
+			return new Category();
+		}
+
+	}
+
+	@PostMapping(value = "/delCategory")
+	public Category deleteCategory(@RequestBody CategoryRequest categoryRequest) {
+		try {
+			Category delCategory = categoryService.deleteCategory(categoryRequest);
+			return delCategory;
 		} catch (Exception e) {
 			return new Category();
 		}

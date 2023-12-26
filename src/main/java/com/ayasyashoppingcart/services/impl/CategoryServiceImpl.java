@@ -13,23 +13,19 @@ import com.ayasyashoppingcart.services.CategoryService;
 
 @Service
 public class CategoryServiceImpl implements CategoryService {
-	
+
 	@Autowired
 	private CategoryRepo categoryRepo;
 
 	@Override
 	public Category addCategory(CategoryRequest req) {
 		Category category = null;
-		if(req != null)
-		{
+		if (req != null) {
 			Optional<Category> findByCatId = categoryRepo.findById(req.getCategoryId());
-			if(findByCatId.isPresent())
-			{
+			if (findByCatId.isPresent()) {
 				category = findByCatId.get();
 				category.setUpdatedBy("ADMIN");
-			}
-			else
-			{
+			} else {
 				category = new Category();
 				category.setCreatedBy("ADMIN");
 			}
@@ -41,8 +37,17 @@ public class CategoryServiceImpl implements CategoryService {
 
 	@Override
 	public Category deleteCategory(CategoryRequest req) {
-		// TODO Auto-generated method stub
-		return null;
+		Category category = null;
+		if (req != null) {
+			Optional<Category> findByCatId = categoryRepo.findById(req.getCategoryId());
+			if (findByCatId.isPresent()) {
+				category = new Category();
+				category.setUpdatedBy("ADMIN");
+				category.setIsActive("false");
+				BeanUtils.copyProperties(req, category);
+			}
+		}
+		return categoryRepo.saveAndFlush(category);
 	}
 
 }
