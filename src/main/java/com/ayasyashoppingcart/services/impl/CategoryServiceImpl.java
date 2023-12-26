@@ -1,5 +1,6 @@
 package com.ayasyashoppingcart.services.impl;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.BeanUtils;
@@ -48,6 +49,25 @@ public class CategoryServiceImpl implements CategoryService {
 			}
 		}
 		return categoryRepo.saveAndFlush(category);
+	}
+
+	@Override
+	public List<Category> findAll() {
+
+		return categoryRepo.findAll();
+	}
+
+	@Override
+	public Category findById(Long id) {
+		Optional<Category> findByCatId = categoryRepo.findById(id);
+		Category category = new Category();
+		if(findByCatId.isPresent())
+		{
+			category = findByCatId.get();
+		}
+
+
+		return category;
 	}
 
 }
