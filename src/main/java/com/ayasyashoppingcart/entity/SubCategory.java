@@ -3,59 +3,56 @@ package com.ayasyashoppingcart.entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name="sub_category")
-public class SubCategory  extends BaseClass {
+@Table(name = "sub_category")
+public class SubCategory extends BaseClass {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "subCategory_id")
-    private Long subCategoryId;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "subcategory_id")
+	private Long subCategoryId;
 
-    @Column(name = "cart_id")
-    private Long cartId;
+	@Column(name = "cat_id")
+	private Long catId;
 
-    @Column(name="subcategory_name")
-    private String subCategoryName;
+	@Column(name = "subcategory_name")
+	private String subCategoryName;
 
-    public SubCategory(Long subCategoryId, Long cartId, String subCategoryName) {
-        this.subCategoryId = subCategoryId;
-        this.cartId = cartId;
-        this.subCategoryName = subCategoryName;
-    }
+	public SubCategory(Long subCategoryId, Long catId, String subCategoryName) {
+		this.subCategoryId = subCategoryId;
+		this.catId = catId;
+		this.subCategoryName = subCategoryName;
+	}
 
-    public SubCategory() {
-    }
+	public SubCategory() {
+	}
 
-    public Long getSubCategoryId() {
-        return subCategoryId;
-    }
+	public Long getSubCategoryId() {
+		return subCategoryId;
+	}
 
-    public void setSubCategoryId(Long subCategoryId) {
-        this.subCategoryId = subCategoryId;
-    }
+	public void setSubCategoryId(Long subCategoryId) {
+		this.subCategoryId = subCategoryId;
+	}
 
-    public Long getCartId() {
-        return cartId;
-    }
+	public Long getCatId() {
+		return catId;
+	}
 
-    public void setCartId(Long cartId) {
-        this.cartId = cartId;
-    }
+	public void setCatId(Long catId) {
+		this.catId = catId;
+	}
 
-    public String getSubCategoryName() {
-        return subCategoryName;
-    }
+	public String getSubCategoryName() {
+		return subCategoryName;
+	}
 
-    public void setSubCategoryName(String subCategoryName) {
-        this.subCategoryName = subCategoryName;
-    }
+	public void setSubCategoryName(String subCategoryName) {
+		this.subCategoryName = subCategoryName;
+	}
 
-    @Override
-    public String toString() {
-        return "SubCategory{" +
-                "subCategoryId=" + subCategoryId +
-                ", cartId=" + cartId +
-                ", subCategoryName='" + subCategoryName + '\'' +
-                '}';
-    }
+	@Override
+	public String toString() {
+		return "SubCategory [subCategoryId=" + subCategoryId + ", catId=" + catId + ", subCategoryName="
+				+ subCategoryName + "]";
+	}
 }

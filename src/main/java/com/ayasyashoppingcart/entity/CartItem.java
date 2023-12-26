@@ -3,70 +3,68 @@ package com.ayasyashoppingcart.entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name="cart_item")
-public class CartItem  extends BaseClass{
+@Table(name = "cart_item")
+public class CartItem extends BaseClass {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "cartitem_id")
-    private Long cartItemId;
-    @Column(name = "cart_id")
-    private Long cartId;
-    @Column(name = "product_id")
-    private Long productId;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "cartitem_id")
+	private Long cartItemId;
 
-    @Column(name = "quantity")
-    private Long quantity;
+	@Column(name = "cart_id")
+	private Long cartId;
 
-    public CartItem(Long cartItemId, Long cartId, Long productId, Long quantity) {
-        this.cartItemId = cartItemId;
-        this.cartId = cartId;
-        this.productId = productId;
-        this.quantity = quantity;
-    }
+	@Column(name = "product_id")
+	private Long productId;
 
-    public CartItem() {
-    }
+	@Column(name = "quantity")
+	private Long quantity;
 
-    public Long getCartItemId() {
-        return cartItemId;
-    }
+	public CartItem(Long cartItemId, Long cartId, Long productId, Long quantity) {
+		this.cartItemId = cartItemId;
+		this.cartId = cartId;
+		this.productId = productId;
+		this.quantity = quantity;
+	}
 
-    public void setCartItemId(Long cartItemId) {
-        this.cartItemId = cartItemId;
-    }
+	public CartItem() {
+	}
 
-    public Long getCartId() {
-        return cartId;
-    }
+	public Long getCartItemId() {
+		return cartItemId;
+	}
 
-    public void setCartId(Long cartId) {
-        this.cartId = cartId;
-    }
+	public void setCartItemId(Long cartItemId) {
+		this.cartItemId = cartItemId;
+	}
 
-    public Long getProductId() {
-        return productId;
-    }
+	public Long getCartId() {
+		return cartId;
+	}
 
-    public void setProductId(Long productId) {
-        this.productId = productId;
-    }
+	public void setCartId(Long cartId) {
+		this.cartId = cartId;
+	}
 
-    public Long getQuantity() {
-        return quantity;
-    }
+	public Long getProductId() {
+		return productId;
+	}
 
-    public void setQuantity(Long quantity) {
-        this.quantity = quantity;
-    }
+	public void setProductId(Long productId) {
+		this.productId = productId;
+	}
 
-    @Override
-    public String toString() {
-        return "CartItem{" +
-                "cartItemId=" + cartItemId +
-                ", cartId=" + cartId +
-                ", productId=" + productId +
-                ", quantity=" + quantity +
-                '}';
-    }
+	public Long getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(Long quantity) {
+		this.quantity = quantity;
+	}
+
+	@Override
+	public String toString() {
+		return "CartItem{" + "cartItemId=" + cartItemId + ", cartId=" + cartId + ", productId=" + productId
+				+ ", quantity=" + quantity + '}';
+	}
 }

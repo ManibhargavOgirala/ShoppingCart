@@ -1,24 +1,17 @@
-package com.ayasyashoppingcart.entity;
+package com.ayasyashoppingcart.request;
 
-import jakarta.persistence.*;
-
-@Entity
-@Table(name = "category")
-public class Category extends BaseClass {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "cat_id")
+public class CategoryRequest {
+	
 	private Long categoryId;
-
-	@Column(name = "cat_name")
 	private String categoryName;
 
-	public Category(Long categoryId, String categoryName) {
+	public CategoryRequest(Long categoryId, String categoryName) {
 		this.categoryId = categoryId;
 		this.categoryName = categoryName;
 	}
 
-	public Category() {
+	public CategoryRequest() {
+
 	}
 
 	public Long getCategoryId() {
@@ -36,4 +29,5 @@ public class Category extends BaseClass {
 	public void setCategoryName(String categoryName) {
 		this.categoryName = categoryName;
 	}
+
 }
