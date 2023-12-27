@@ -10,6 +10,15 @@ public class CategoryResponse {
 	private String updatedBy;
 	private String isActive;
 
+	public CategoryResponse(Long categoryId, String categoryName, String createdBy, Date createdDate, String updatedBy, String isActive) {
+		this.categoryId = categoryId;
+		this.categoryName = categoryName;
+		this.createdBy = createdBy;
+		this.createdDate = createdDate;
+		this.updatedBy = updatedBy;
+		this.isActive = isActive;
+	}
+
 	public Long getCategoryId() {
 		return categoryId;
 	}
