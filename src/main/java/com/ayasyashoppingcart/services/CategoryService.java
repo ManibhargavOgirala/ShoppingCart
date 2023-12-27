@@ -1,13 +1,14 @@
 package com.ayasyashoppingcart.services;
 
-import com.ayasyashoppingcart.entity.Category;
-import com.ayasyashoppingcart.request.CategoryRequest;
-
 import java.util.List;
 
-public interface CategoryService {
+import com.ayasyashoppingcart.entity.Category;
+import com.ayasyashoppingcart.request.CategoryRequest;
+import com.ayasyashoppingcart.request.DelCategoryRequest;
+
+public interface CategoryService  {
 	Category addCategory(CategoryRequest req);
-	Category deleteCategory(CategoryRequest req);
+	Category deleteCategory(DelCategoryRequest req);
 
     List<Category> findAll();
 

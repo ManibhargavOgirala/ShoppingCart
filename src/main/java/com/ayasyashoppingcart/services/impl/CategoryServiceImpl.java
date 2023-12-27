@@ -8,8 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ayasyashoppingcart.entity.Category;
+import com.ayasyashoppingcart.handler.CategoryNotFoundException;
+import com.ayasyashoppingcart.handler.NoCategoryFoundException;
 import com.ayasyashoppingcart.repository.CategoryRepo;
 import com.ayasyashoppingcart.request.CategoryRequest;
+import com.ayasyashoppingcart.request.DelCategoryRequest;
 import com.ayasyashoppingcart.services.CategoryService;
 
 @Service
@@ -37,18 +40,21 @@ public class CategoryServiceImpl implements CategoryService {
 	}
 
 	@Override
-	public Category deleteCategory(CategoryRequest req) {
+	public Category deleteCategory(DelCategoryRequest req) {
+		Optional<Category> findByCatId = categoryRepo.findById(req.getCategoryId());
 		Category category = null;
-		if (req != null) {
-			Optional<Category> findByCatId = categoryRepo.findById(req.getCategoryId());
-			if (findByCatId.isPresent()) {
-				category = new Category();
-				category.setUpdatedBy("ADMIN");
-				category.setIsActive("false");
-				BeanUtils.copyProperties(req, category);
-			}
+		if (findByCatId.isPresent()) {
+			category = new Category();
+			BeanUtils.copyProperties(findByCatId.get(), category);
+			category.setUpdatedBy("ADMIN");
+			category.setIsActive("false");
+			categoryRepo.save(category);
 		}
-		return categoryRepo.saveAndFlush(category);
+
+		if (findByCatId.isEmpty()) {
+			throw new CategoryNotFoundException("Category Id " + req.getCategoryId() + " Not Found !!");
+		}
+		return category;
 	}
 
 	@Override
@@ -61,11 +67,13 @@ public class CategoryServiceImpl implements CategoryService {
 	public Category findById(Long id) {
 		Optional<Category> findByCatId = categoryRepo.findById(id);
 		Category category = new Category();
-		if(findByCatId.isPresent())
-		{
+		if (findByCatId.isPresent()) {
 			category = findByCatId.get();
 		}
 
+		if (findByCatId.isEmpty()) {
+			throw new NoCategoryFoundException("Category Id " + id + " Not Found !!");
+		}
 
 		return category;
 	}
