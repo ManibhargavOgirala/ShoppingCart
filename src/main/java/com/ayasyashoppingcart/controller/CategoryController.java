@@ -1,5 +1,7 @@
 package com.ayasyashoppingcart.controller;
 
+import com.ayasyashoppingcart.request.CategorySearchRequest;
+import com.ayasyashoppingcart.response.CategorysearchResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
@@ -51,6 +53,12 @@ public class CategoryController {
 	public Category findbyId(@PathVariable Long id)
 	{
 		return categoryService.findById(id);
+	}
+
+	@PostMapping("/advanceSearch")
+	public CategorysearchResponse advanceSearch(@RequestBody CategorySearchRequest categorySearchRequest)
+	{
+		return categoryService.advanceSearch(categorySearchRequest);
 	}
 
 }

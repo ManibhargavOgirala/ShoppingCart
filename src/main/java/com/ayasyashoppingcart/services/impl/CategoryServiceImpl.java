@@ -3,8 +3,15 @@ package com.ayasyashoppingcart.services.impl;
 import java.util.List;
 import java.util.Optional;
 
+import com.ayasyashoppingcart.request.CategorySearchRequest;
+import com.ayasyashoppingcart.response.CategoryResponse;
+import com.ayasyashoppingcart.response.CategorysearchResponse;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.ayasyashoppingcart.entity.Category;
@@ -69,5 +76,38 @@ public class CategoryServiceImpl implements CategoryService {
 
 		return category;
 	}
+
+	@Override
+	public CategorysearchResponse advanceSearch(CategorySearchRequest categorySearchRequest) {
+
+          CategorysearchResponse categorysearchResponse = new CategorysearchResponse();
+
+		  Page<CategoryResponse> categoryPageResponse = null;
+
+		Pageable pageRequest = PageRequest.of(categorySearchRequest.getPage() - 1, categorySearchRequest.getLimit(),
+				Sort.by(Sort.Direction.fromString(categorySearchRequest.getOrderDirection()), categorySearchRequest.getOrderBy()));
+
+		if((categorySearchRequest.getCategoryName()==null|| categorySearchRequest.getCategoryName().isEmpty())
+		&& (categorySearchRequest.getCreatedDate()==null|| categorySearchRequest.getCreatedDate().isEmpty()))
+
+
+		{
+			categoryPageResponse=	categoryRepo.findAllCategory(pageRequest);
+		}
+		else
+		{
+			String category = (categorySearchRequest.getCategoryName()==null || categorySearchRequest.getCategoryName().isEmpty())?
+					"%":categorySearchRequest.getCategoryName().trim()+"%";
+			String date = (categorySearchRequest.getCreatedDate()==null || categorySearchRequest.getCreatedDate().isEmpty())?
+					"%":categorySearchRequest.getCreatedDate().trim()+"%";
+			categoryPageResponse = categoryRepo.findAllCategory(pageRequest,category,date);
+		}
+               BeanUtils.copyProperties(categorySearchRequest,categorysearchResponse);
+		categorysearchResponse.setCount(categoryPageResponse.getTotalElements());
+		categorysearchResponse.setResultObjects(categoryPageResponse.getContent());
+
+		return categorysearchResponse;
+	}
+
 
 }
