@@ -7,10 +7,9 @@ import com.ayasyashoppingcart.request.CategoryRequest;
 import com.ayasyashoppingcart.request.DelCategoryRequest;
 
 public interface CategoryService  {
-	Category addCategory(CategoryRequest req);
+  Category addCategory(CategoryRequest req);
 	Category deleteCategory(DelCategoryRequest req);
-
-    List<Category> findAll();
-
-	Category findById(Long id);
+  List<Category> findAll();
+  Category findById(Long id);
+  CategorysearchResponse advanceSearch(CategorySearchRequest categorySearchRequest);
 }

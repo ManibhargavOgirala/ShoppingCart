@@ -49,4 +49,10 @@ public class CategoryController {
 		return categoryService.findById(id);
 	}
 
+	@PostMapping("/advanceSearch")
+	public CategorysearchResponse advanceSearch(@RequestBody CategorySearchRequest categorySearchRequest)
+	{
+		return categoryService.advanceSearch(categorySearchRequest);
+	}
+
 }
