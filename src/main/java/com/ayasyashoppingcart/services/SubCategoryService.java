@@ -19,5 +19,4 @@ public interface SubCategoryService {
 
     SubCategory deleteSubCategorybyId(Long id);
 
-    SubCategorySearchResponse advanceSearch(SubCategorySearchRequest subCategorySearchRequest);
 }
