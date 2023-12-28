@@ -1,19 +1,19 @@
 package com.ayasyashoppingcart.controller;
 
-import com.ayasyashoppingcart.request.CategorySearchRequest;
-import com.ayasyashoppingcart.response.CategorysearchResponse;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.ayasyashoppingcart.entity.Category;
 import com.ayasyashoppingcart.request.CategoryRequest;
+import com.ayasyashoppingcart.request.DelCategoryRequest;
 import com.ayasyashoppingcart.services.CategoryService;
-
-import java.util.List;
 
 @RestController
 @RequestMapping(value = "api/v1/category")
@@ -34,24 +34,18 @@ public class CategoryController {
 	}
 
 	@PostMapping(value = "/delCategory")
-	public Category deleteCategory(@RequestBody CategoryRequest categoryRequest) {
-		try {
-			Category delCategory = categoryService.deleteCategory(categoryRequest);
-			return delCategory;
-		} catch (Exception e) {
-			return new Category();
-		}
-
+	public Category deleteCategory(@RequestBody DelCategoryRequest req) {
+		Category delCategory = categoryService.deleteCategory(req);
+		return delCategory;
 	}
-		@GetMapping(value="/findAll")
-				public List<Category> findAll()
-		{
-			return categoryService.findAll();
-		}
 
-	@GetMapping(value="/findbyId/{id}")
-	public Category findbyId(@PathVariable Long id)
-	{
+	@GetMapping(value = "/findAll")
+	public List<Category> findAll() {
+		return categoryService.findAll();
+	}
+
+	@GetMapping(value = "/findbyId/{id}")
+	public Category findbyId(@PathVariable Long id) {
 		return categoryService.findById(id);
 	}
 
